@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lupita Tortas - Repostería Artesanal</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos rápidos para el visor de imagen grande (Modal) */
+        .modal-imagen {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            text-align: center;
+        }
+        .modal-contenido {
+            max-width: 80%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+        .cerrar-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .cerrar-modal:hover {
+            color: #f1f1f1;
+        }
+        .galeria-container .card-foto img {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .galeria-container .card-foto img:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado con Logo y Redes -->
+    <header class="hero">
+        <div class="logo-container">
+            <img src="img/logo/logo.png" alt="Lupita Tortas Logo" class="logo-img">
+        </div>
+        <h1>Bienvenido a Lupita Tortas</h1>
+        <p>Lupita Tortas es especialista en la elaboración de tortas artesanales, cumpleaños, eventos y todo tipo de delicias.</p>
+        <a href="https://www.instagram.com/lupitatortas__?rpxt=MWRnZ2pwb2h2bTFidQ==" target="_blank" class="btn-instagram">
+            Ver en Instagram
+        </a>
+    </header>
+
+    <!-- Menú de Navegación por Categorías (Pestañas) -->
+    <nav class="categorias-nav">
+        <button class="tab-btn active" onclick="filtrarSeccion('todos')">Ver Todo</button>
+        <button class="tab-btn" onclick="filtrarSeccion('niños')">Tortas para Niños</button>
+        <button class="tab-btn" onclick="filtrarSeccion('niñas')">Tortas para Niñas</button>
+        <button class="tab-btn" onclick="filtrarSeccion('eventos')">Eventos</button>
+        <button class="tab-btn" onclick="filtrarSeccion('pies')">Pies & Tartas</button>
+    </nav>
+
+    <!-- Contenedor Principal del Portfolio / Galerías -->
+    <main class="galeria-container">
+
+        <!-- SECCIÓN: NIÑOS -->
+        <section class="seccion-categoria niños">
+            <h2>👦 Tortas para Niños</h2>
+            <div class="grid-fotos">
+                <div class="card-foto">
+                    <img src="img/niños/tortapokemon.jpg" alt="Torta Anime" onclick="abrirModal(this)">
+                    <p>Torta Anime</p>
+                </div>
+                <div class="card-foto">
+                    <img src="img/niños/torta2.jpg" alt="Torta Bluey" onclick="abrirModal(this)">
+                    <p>Torta Bluey</p>
+                </div>
+                <div class="card-foto">
+                    <img src="img/niños/messi.jpg" alt="Torta de Messi" onclick="abrirModal(this)">
+                    <p>Torta de Messi</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: NIÑAS -->
+        <section class="seccion-categoria niñas">
+            <h2>👧 Tortas para Niñas</h2>
+            <div class="grid-fotos">
+                <div class="card-foto">
+                    <img src="img/niñas/kpop.png" alt="Torta Kpop" onclick="abrirModal(this)">
+                    <p>Torta Kpop</p>
+                </div>
+                <div class="card-foto">
+                    <img src="img/niñas/sailoor.png" alt="Torta Sailoor Moon" onclick="abrirModal(this)">
+                    <p>Torta Sailoor Moon</p>
+                </div>
+                <div class="card-foto">
+                    <img src="img/niñas/masha.png" alt="Torta Masha y el Oso" onclick="abrirModal(this)">
+                    <p>Torta Masha</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: EVENTOS -->
+        <section class="seccion-categoria eventos">
+            <h2>🎉 Torta de Cumpleaños personalizados</h2>
+            <div class="grid-fotos">
+                <div class="card-foto">
+                    <img src="img/eventos/evento.png" alt="Cumpleaños" onclick="abrirModal(this)">
+                    <p>Cumpleaños</p>
+                </div>
+                <div class="card-foto">
+                    <img src="img/eventos/evento1.png" alt="Cumpleaños" onclick="abrirModal(this)">
+                    <p>Cumpleaños</p>
+                </div>
+                <div class="card-foto">
+                    <img src="img/eventos/evento2.png" alt="Cumpleaños" onclick="abrirModal(this)">
+                    <p>Cumpleaños</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: PIES -->
+        <section class="seccion-categoria pies">
+            <h2>🥧 Pies y Tartas</h2>
+            <div class="grid-fotos">
+                <div class="card-foto">
+                    <img src="img/pies/pie.png" alt="Torta de Frutilla" onclick="abrirModal(this)">
+                    <p>Torta de Frutilla</p>
+                </div>
+                <div class="card-foto">
+                    <img src="img/pies/pie1.png" alt="Torta de Frutilla" onclick="abrirModal(this)">
+                    <p>Torta de Frutilla</p>
+                </div>
+                <div class="card-foto">
+                    <img src="img/pies/pie2.png" alt="Torta de Frutilla" onclick="abrirModal(this)">
+                    <p>Torta de Frutilla</p>
+                </div>
+                <div class="card-foto">
+                    <img src="img/pies/pie4.png" alt="Torta de Frutilla" onclick="abrirModal(this)">
+                    <p>Torta de Frutilla</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- VENTANA MODAL PARA AMPLIAR IMAGEN -->
+    <div id="modalZoom" class="modal-imagen" onclick="cerrarModal()">
+        <span class="cerrar-modal">&times;</span>
+        <img class="modal-contenido" id="imgAmpliada">
+    </div>
+
+    <footer>
+        <p>Contacto info</p>
+        <p><strong>0982 329 148</strong></p>
+        <p>&copy; 2026 Lupita Tortas - Hecho con amor.</p>
+    </footer>
+
+    <script>
+        function abrirModal(elemento) {
+            var modal = document.getElementById("modalZoom");
+            var imgModal = document.getElementById("imgAmpliada");
+            modal.style.display = "block";
+            imgModal.src = elemento.src;
+        }
+
+        function cerrarModal() {
+            var modal = document.getElementById("modalZoom");
+            modal.style.display = "none";
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
