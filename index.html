@@ -178,27 +178,13 @@
             var modal = document.getElementById("modalZoom");
             modal.style.display = "none";
         }
-  <script>
-        function abrirModal(elemento) {
-            var modal = document.getElementById("modalZoom");
-            var imgModal = document.getElementById("imgAmpliada");
-            modal.style.display = "block";
-            imgModal.src = elemento.src;
-        }
-
-        function cerrarModal() {
-            var modal = document.getElementById("modalZoom");
-            modal.style.display = "none";
-        }
 
         // Función para filtrar las categorías con los botones superiores
         function filtrarSeccion(categoria) {
-            // Cambiar clase active en los botones
             const botones = document.querySelectorAll('.tab-btn');
             botones.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            // Mostrar u ocultar las secciones
             const secciones = document.querySelectorAll('.seccion-categoria');
             secciones.forEach(seccion => {
                 if (categoria === 'todos') {
@@ -213,7 +199,5 @@
             });
         }
     </script>
-</body>
-</html>
 </body>
 </html>
