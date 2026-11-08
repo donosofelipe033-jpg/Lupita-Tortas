@@ -62,11 +62,11 @@
 
     <!-- Menú de Navegación por Categorías (Pestañas) -->
     <nav class="categorias-nav">
-        <button class="tab-btn active" onclick="filtrarSeccion('todos')">Ver Todo</button>
-        <button class="tab-btn" onclick="filtrarSeccion('niños')">Tortas para Niños</button>
-        <button class="tab-btn" onclick="filtrarSeccion('niñas')">Tortas para Niñas</button>
-        <button class="tab-btn" onclick="filtrarSeccion('eventos')">Eventos</button>
-        <button class="tab-btn" onclick="filtrarSeccion('pies')">Pies & Tartas</button>
+        <button class="tab-btn active" onclick="filtrarSeccion('todos', event)">Ver Todo</button>
+        <button class="tab-btn" onclick="filtrarSeccion('niños', event)">Tortas para Niños</button>
+        <button class="tab-btn" onclick="filtrarSeccion('niñas', event)">Tortas para Niñas</button>
+        <button class="tab-btn" onclick="filtrarSeccion('eventos', event)">Eventos</button>
+        <button class="tab-btn" onclick="filtrarSeccion('pies', event)">Pies & Tartas</button>
     </nav>
 
     <!-- Contenedor Principal del Portfolio / Galerías -->
@@ -179,11 +179,11 @@
             modal.style.display = "none";
         }
 
-        // Función para filtrar las categorías con los botones superiores
-        function filtrarSeccion(categoria) {
+        // Función para filtrar las categorías de forma interactiva
+        function filtrarSeccion(categoria, evento) {
             const botones = document.querySelectorAll('.tab-btn');
             botones.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            evento.target.classList.add('active');
 
             const secciones = document.querySelectorAll('.seccion-categoria');
             secciones.forEach(seccion => {
